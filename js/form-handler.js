@@ -1,4 +1,4 @@
-// Enhanced Puppy Cheat Sheet Form Handler
+// Netlify Form Handler for Puppy Cheat Sheet
 class PuppyFormHandler {
     constructor() {
         this.form = document.getElementById('puppyForm');
@@ -31,7 +31,6 @@ class PuppyFormHandler {
     }
 
     addInputValidation() {
-        // Email validation pattern
         this.emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     }
 
@@ -89,7 +88,6 @@ class PuppyFormHandler {
     validateForm() {
         let isValid = true;
         
-        // Validate all required fields
         this.form.querySelectorAll('[required]').forEach(field => {
             if (!this.validateField(field)) {
                 isValid = false;
@@ -110,35 +108,34 @@ class PuppyFormHandler {
         this.setLoadingState(true);
 
         try {
-            // For Netlify Forms - this will work when deployed
             const formData = new FormData(this.form);
+            const userEmail = formData.get('email');
             
-            // Simulate form submission (remove this in production)
-            await this.simulateSubmission(formData);
-            
-            // Show success message
-            this.showSuccessMessage(formData.get('email'));
-            this.form.reset();
+            // Netlify Forms Submission
+            const response = await fetch('/', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/x-www-form-urlencoded' 
+                },
+                body: new URLSearchParams(new URLSearchParams(formData)).toString()
+            });
+
+            if (response.ok) {
+                this.showSuccessMessage(userEmail);
+                this.form.reset();
+            } else {
+                throw new Error('Form submission failed');
+            }
             
         } catch (error) {
-            this.showMessage('😔 Something went wrong. Please try again or contact us directly.', 'error');
+            console.error('Form submission error:', error);
+            this.showMessage(
+                '😔 Unable to send right now. Please try again in a few moments.', 
+                'error'
+            );
         } finally {
             this.setLoadingState(false);
         }
-    }
-
-    async simulateSubmission(formData) {
-        // Simulate API call - remove this when using Netlify Forms
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                // Simulate 90% success rate
-                if (Math.random() > 0.1) {
-                    resolve();
-                } else {
-                    reject(new Error('Simulated network error'));
-                }
-            }, 2000);
-        });
     }
 
     setLoadingState(loading) {
@@ -154,23 +151,21 @@ class PuppyFormHandler {
     showSuccessMessage(email) {
         this.messageDiv.innerHTML = `
             <div class="success-message">
-                <h3>🎉 Cheat Sheet Sent Successfully!</h3>
-                <p>We've emailed your personalized puppy care guide to <strong>${email}</strong></p>
-                <p>📬 <strong>Check your inbox</strong> (and spam folder) within 5 minutes</p>
+                <h3>🎉 Success! Cheat Sheet Sent!</h3>
+                <p>We've emailed your personalized puppy care guide to:</p>
+                <p class="user-email"><strong>${email}</strong></p>
+                <div class="success-details">
+                    <p>📬 <strong>Check your inbox</strong> within 5 minutes</p>
+                    <p>📋 You'll receive age-specific guidance for your puppy</p>
+                    <p>🐾 Don't forget to check your spam folder</p>
+                </div>
                 <div class="disclaimer">
-                    <p>💡 <strong>Important Disclaimer:</strong></p>
-                    <p>This information is general guidance. Always consult with your veterinarian for specific advice about your puppy's health and care.</p>
-                    <p>🏥 <strong>Local Nairobi Contacts:</strong></p>
-                    <ul>
-                        <li>KSPCA: 0700 000 000</li>
-                        <li>Nairobi Vet Services: 0712 345 678</li>
-                        <li>Emergency Vet: 0733 123 456</li>
-                    </ul>
+                    <p>💡 <strong>Important Disclaimer:</strong> This is general guidance. Always consult your veterinarian for specific advice.</p>
+                    <p>🏥 <strong>Local Nairobi Contacts:</strong> KSPCA: 0700 000 000 | Emergency Vet: 0733 123 456</p>
                 </div>
             </div>
         `;
         
-        // Add celebration
         this.createConfetti();
     }
 
@@ -185,13 +180,14 @@ class PuppyFormHandler {
 
     createConfetti() {
         const colors = ['#FFB6C1', '#87CEEB', '#98FB98', '#FFD700'];
-        for (let i = 0; i < 30; i++) {
+        for (let i = 0; i < 20; i++) {
             const confetti = document.createElement('div');
             confetti.className = 'floating-emoji';
             confetti.style.left = Math.random() * 100 + 'vw';
             confetti.style.animationDelay = Math.random() * 2 + 's';
             confetti.textContent = ['🎉', '🎊', '🐕', '🐾', '📧'][Math.floor(Math.random() * 5)];
             confetti.style.fontSize = (Math.random() * 20 + 15) + 'px';
+            confetti.style.zIndex = '9999';
             document.body.appendChild(confetti);
             
             setTimeout(() => confetti.remove(), 3000);
@@ -199,7 +195,7 @@ class PuppyFormHandler {
     }
 }
 
-// Initialize form handler when page loads
+// Initialize form handler
 document.addEventListener('DOMContentLoaded', () => {
     new PuppyFormHandler();
 });

@@ -43,17 +43,25 @@
             </div>
 
             <div class="form-container">
-                <form id="puppyForm" netlify>
+                <form id="puppyForm" name="puppy-cheat-sheet" method="POST" netlify netlify-honeypot="bot-field">
+                    <!-- Honeypot field for spam protection -->
+                    <p class="hidden">
+                        <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                    </p>
+                    
+                    <!-- Hidden form name for Netlify -->
+                    <input type="hidden" name="form-name" value="puppy-cheat-sheet">
+                    
                     <div class="form-group">
                         <label for="puppyAge" class="form-label">Puppy Age Range: 🐕</label>
                         <select id="puppyAge" name="puppyAge" required class="form-select">
                             <option value="">Select your puppy's age range</option>
-                            <option value="0-2">0-2 weeks (Newborn) 👶</option>
-                            <option value="2-4">2-4 weeks (Infant) 🍼</option>
-                            <option value="4-8">4-8 weeks (Weaning) 🐣</option>
-                            <option value="8-12">8-12 weeks (Socialization) 🎯</option>
-                            <option value="3-6">3-6 months (Teething) 🦷</option>
-                            <option value="6-12">6-12 months (Adolescent) 🐕</option>
+                            <option value="0-2 weeks">0-2 weeks (Newborn) 👶</option>
+                            <option value="2-4 weeks">2-4 weeks (Infant) 🍼</option>
+                            <option value="4-8 weeks">4-8 weeks (Weaning) 🐣</option>
+                            <option value="8-12 weeks">8-12 weeks (Socialization) 🎯</option>
+                            <option value="3-6 months">3-6 months (Teething) 🦷</option>
+                            <option value="6-12 months">6-12 months (Adolescent) 🐕</option>
                         </select>
                         <div class="error-message" id="ageError"></div>
                     </div>
@@ -61,16 +69,16 @@
                     <div class="form-group">
                         <label for="email" class="form-label">Your Email: 📧</label>
                         <input type="email" id="email" name="email" required 
-                               class="form-input" 
-                               placeholder="puppylover@example.com">
+                            class="form-input" 
+                            placeholder="puppylover@example.com">
                         <div class="error-message" id="emailError"></div>
                     </div>
 
                     <div class="form-group">
                         <label for="puppyName" class="form-label">Puppy's Name (Optional): 🐾</label>
                         <input type="text" id="puppyName" name="puppyName" 
-                               class="form-input" 
-                               placeholder="e.g., Max, Luna, Cooper...">
+                            class="form-input" 
+                            placeholder="e.g., Max, Luna, Cooper...">
                     </div>
                     
                     <button type="submit" class="submit-btn">

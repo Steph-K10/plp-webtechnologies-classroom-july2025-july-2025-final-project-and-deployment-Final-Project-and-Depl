@@ -240,3 +240,7 @@
 .submit-btn.loading {
     animation: pulse 1s infinite;
 }
+
+.hidden {
+    display: none;
+}
