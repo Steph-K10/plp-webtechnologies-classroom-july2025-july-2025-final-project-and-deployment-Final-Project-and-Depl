@@ -1,4 +1,4 @@
-// Simple Event Card Interactions
+// Event Card Interactions
 document.addEventListener('DOMContentLoaded', () => {
     // Event info toggle
     document.querySelectorAll('.event-info-btn').forEach(btn => {

@@ -287,7 +287,7 @@ class DogQuiz {
             .slice(0, 4)
             .map(([trait]) => trait);
 
-        // Simple matching logic - you can make this more sophisticated
+        // Simple matching logic
         const breedScores = this.dogBreeds.map((breed, index) => {
             let score = 0;
             sortedTraits.forEach(trait => {
