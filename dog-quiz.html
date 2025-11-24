@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Dog Are You? - PuppyPro Guide</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/quiz.css">
+</head>
+<body>
+    <!-- Floating Emojis -->
+    <div class="floating-emoji">🐕</div>
+    <div class="floating-emoji">🐶</div>
+    <div class="floating-emoji">🎾</div>
+    <div class="floating-emoji">🏆</div>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">PuppyPro 🐾</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="milestones.html">Puppy Milestones</a></li>
+                <li><a href="events.html">Local Events</a></li>
+                <li><a href="cheat-sheet.html">Puppy Cheat Sheet</a></li>
+                <li><a href="dog-quiz.html">Dog Personality Quiz</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Quiz Section -->
+    <section class="quiz-section">
+        <div class="container">
+            <div class="quiz-header">
+                <h1>🐕 What Dog Breed Matches Your Personality?</h1>
+                <p class="subtitle">Take this fun quiz to discover your canine counterpart! 🎯</p>
+            </div>
+
+            <div id="quizContainer" class="quiz-container">
+                <!-- Quiz questions will be inserted here by JavaScript -->
+            </div>
+
+            <div class="quiz-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <span class="progress-text" id="progressText">Question 1 of 10</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 PuppyPro Guide. Made with ❤️ for all puppies</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/quiz.js"></script>
+</body>
+</html>

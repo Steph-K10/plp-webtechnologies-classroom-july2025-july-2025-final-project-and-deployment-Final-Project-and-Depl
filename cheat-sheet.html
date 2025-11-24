@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puppy Cheat Sheet - PuppyPro Guide</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/form.css">
+</head>
+<body>
+    <!-- Floating Emojis -->
+    <div class="floating-emoji">📋</div>
+    <div class="floating-emoji">🐾</div>
+    <div class="floating-emoji">🍼</div>
+    <div class="floating-emoji">🎯</div>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">PuppyPro 🐾</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="milestones.html">Puppy Milestones</a></li>
+                <li><a href="events.html">Local Events</a></li>
+                <li><a href="cheat-sheet.html">Puppy Cheat Sheet</a></li>
+                <li><a href="dog-quiz.html">Dog Personality Quiz</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cheat Sheet Form Section -->
+    <section class="cheat-sheet-section">
+        <div class="container">
+            <div class="form-header">
+                <h1>📋 Get Your Free Puppy Care Cheat Sheet</h1>
+                <p class="subtitle">Age-specific guidance delivered to your inbox! 🎁</p>
+            </div>
+
+            <div class="form-container">
+                <form id="puppyForm" netlify>
+                    <div class="form-group">
+                        <label for="puppyAge" class="form-label">Puppy Age Range: 🐕</label>
+                        <select id="puppyAge" name="puppyAge" required class="form-select">
+                            <option value="">Select your puppy's age range</option>
+                            <option value="0-2">0-2 weeks (Newborn) 👶</option>
+                            <option value="2-4">2-4 weeks (Infant) 🍼</option>
+                            <option value="4-8">4-8 weeks (Weaning) 🐣</option>
+                            <option value="8-12">8-12 weeks (Socialization) 🎯</option>
+                            <option value="3-6">3-6 months (Teething) 🦷</option>
+                            <option value="6-12">6-12 months (Adolescent) 🐕</option>
+                        </select>
+                        <div class="error-message" id="ageError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Your Email: 📧</label>
+                        <input type="email" id="email" name="email" required 
+                               class="form-input" 
+                               placeholder="puppylover@example.com">
+                        <div class="error-message" id="emailError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="puppyName" class="form-label">Puppy's Name (Optional): 🐾</label>
+                        <input type="text" id="puppyName" name="puppyName" 
+                               class="form-input" 
+                               placeholder="e.g., Max, Luna, Cooper...">
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">Get My Cheat Sheet! 📨</span>
+                        <span class="btn-loading">Sending... ⏳</span>
+                    </button>
+                </form>
+                
+                <div class="form-features">
+                    <h3>🎁 What you'll receive:</h3>
+                    <ul>
+                        <li>✅ Age-specific feeding guidelines</li>
+                        <li>✅ Emergency puppy milk replacer recipe</li>
+                        <li>✅ Enrichment activity ideas</li>
+                        <li>✅ Behavior training tips</li>
+                        <li>✅ Local Nairobi vet contacts</li>
+                        <li>✅ KSPCA and rescue resources</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="formMessage" class="form-message"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 PuppyPro Guide. Made with ❤️ for all puppies</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/form-handler.js"></script>
+</body>
+</html>
